@@ -11,3 +11,175 @@ library(lubridate)
 ```
 
 
+```{r}
+tex_2010<-read.csv("2010twbd.csv")
+tex_2011<-read.csv("2011twbd.csv")
+tex_2012<-read.csv("2012twbd.csv")
+tex_2013<-read.csv("2013twbd.csv")
+tex_2014<-read.csv("2014twbd.csv")
+tex_2015<-read.csv("2015.csv")
+tex_2016<-read.csv("2016.csv")
+tex_2017<-read.csv("2017.csv")
+```
+
+```{r}
+tex_2010<-tex_2010%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2011<-tex_2011%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2012<-tex_2012%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2013<-tex_2013%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2014<-tex_2014%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2015<-tex_2015%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2016<-tex_2016%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+tex_2017<-tex_2017%>%
+  select(Year, CountyName, Municipal, Population,Muni_GW,Muni_SW)%>%
+  filter(CountyName == "BEXAR"|CountyName == "HARRIS"|CountyName == "TRAVIS"|CountyName == "DALLAS"|CountyName == "HIDALGO"|CountyName == "EL PASO")%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(tot.Water_Usage = Municipal *325851/365)%>%
+  mutate(WaterUsageCapita = tot.Water_Usage/Population)
+
+```
+
+```{r}
+all<-
+  rbind(tex_2010,tex_2011,tex_2012,tex_2013,tex_2014,tex_2017,tex_2016,tex_2015)%>%
+  arrange(CountyName)%>%
+  mutate(State = "Texas")
+all
+write.csv(all, "water_usage.csv")
+```
+
+```{r}
+tex_2000<-read.csv("2000twbd.csv")
+tex_2001<-read.csv("2001twbd.csv")
+tex_2002<-read.csv("2002twbd.csv")
+tex_2003<-read.csv("2003twbd.csv")
+tex_2004<-read.csv("2004twbd.csv")
+tex_2005<-read.csv("2005twbd.csv")
+tex_2006<-read.csv("2006twbd.csv")
+tex_2007<-read.csv("2007twbd.csv")
+tex_2008<-read.csv("2008twbd.csv")
+tex_2009<-read.csv("2009twbd.csv")
+tex_2010<-read.csv("2010twbd.csv")
+tex_2011<-read.csv("2011twbd.csv")
+tex_2012<-read.csv("2012twbd.csv")
+tex_2013<-read.csv("2013twbd.csv")
+tex_2014<-read.csv("2014twbd.csv")
+tex_2015<-read.csv("2015twbd.csv")
+tex_2016<-read.csv("2016twbd.csv")
+tex_2017<-read.csv("2017twbd.csv")
+
+all<-
+  rbind(tex_2000,tex_2001,tex_2002,tex_2003,tex_2004,tex_2005,tex_2006,tex_2007,tex_2008,tex_2009,tex_2010,tex_2011,tex_2012,tex_2013,tex_2014)
+
+res<-
+  rbind(tex_2015,tex_2016,tex_2017)
+```
+
+```{r}
+par1<-all%>%
+  select(Year, CountyName, Population, Municipal, Manufactoring, Mining, SteamElectric, Irrigation, LiveStock)
+
+colnames(par1)<- c("Year","CountyName","Population","Municipal","Manufacturing","Mining","Power","Irrigation","LiveStock")
+
+par2<-res%>%
+  select(Year, CountyName, Population, Municipal, Manufacturing, Mining, Power, Irrigation, LiveStock)
+
+colnames(par2)<- c("Year","CountyName","Population","Municipal","Manufacturing","Mining","Power","Irrigation","LiveStock")
+```
+
+
+```{r}
+clean<-rbind(par1,par2)
+
+new<-clean%>%
+  filter(CountyName=="COLLIN"|CountyName=="DALLAS"|CountyName=="ROCKWALL"|CountyName=="KAUFMAN"|CountyName=="HUNT")%>%
+  mutate(Population = as.numeric(gsub(",","",Population)))%>%
+  mutate(Municipal = as.numeric(gsub(",","",Municipal)))%>%
+  mutate(Manufacturing = as.numeric(gsub(",","",Manufacturing)))%>%
+  mutate(Mining = as.numeric(gsub(",","",Mining)))%>%
+  mutate(Power = as.numeric(gsub(",","",Power)))%>%
+  mutate(Irrigation = as.numeric(gsub(",","",Irrigation)))%>%
+  mutate(LiveStock = as.numeric(gsub(",","",LiveStock)))
+
+A<-new%>%
+  mutate(Municipal = (Municipal *325851),
+         Manufacturing = (Manufacturing*325851),
+         Mining = (Mining*325851),
+         Power = (Power*325851),
+         LiveStock = (LiveStock*325851)
+         )
+
+B<-
+  A%>%
+  mutate(Municipal = Municipal/Population,
+         Manufacturing = Manufacturing/Population,
+         Mining = Mining/Population,
+         Power = Power/Population,
+         Irrigation = Irrigation/Population,
+         LiveStock = LiveStock/Population)
+
+A
+write.csv(A,"waterusagegallons.csv")
+B
+write.csv(B,"waterusagegallonsperc.csv")
+
+```
+
+
+
+
+
+
+
+
+
